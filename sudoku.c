@@ -125,6 +125,28 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
+  Stack *s = createStack();
+  push(s, initial);
+
+  while(!is_empty(s)){
+    Node *nodito = (Node*) top(s);
+    pop(s);
+    (*cont)++;
+
+    if (is_final(nodito)){
+      clean(s);
+      free(s);
+      return nodito;
+    }
+    List* Adjunto = get_adj_nodes(nodito);
+    Node* Aux = first(Adjunto);
+    while (Aux != NULL){
+      push(s, Aux);
+      Aux = next(Adjunto);
+    }
+    free(nodito);
+    free(Adjunto);
+  }
   return NULL;
 }
 
