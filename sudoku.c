@@ -95,7 +95,7 @@ List* get_adj_nodes(Node* n){
             if (n->sudo[i][j] == 0){
               lopille = 1;
 
-              for (k = 1; k <= 9 , k++) {
+              for (k = 1; k <= 9 ; k++) {
                 Node *Nuevo = copy(n);
                 Nuevo -> sudo[i][j] = k;
                 if (is_valid(Nuevo)){
