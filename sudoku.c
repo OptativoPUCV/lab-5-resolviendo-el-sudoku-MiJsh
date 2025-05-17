@@ -44,7 +44,44 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
+    int i, j , k, p;
+    int visto[10];
+    
+    //confirmo filas
+    for (i = 0; i < 9; i++){
+        for (k = 0; k < 10; k++) visto[k] = 0;
+        for (j = 0; j < 9 ; j++) {
+          int val = n -> sudo[i][j];
+          if (val == 0) continue;
+          if (visto[val]) return 0;
+          visto[val] = 1;
+        }
+    }
 
+    //misma logica pero para las columnas
+    for (j = 0; j < 9; j++){
+        for (k = 0; k < 10; k++) visto[k] = 0;
+        for (i = 0; i < 9 ; i++) {
+          int val = n -> sudo[i][j];
+          if (val == 0) continue;
+          if (visto[val]) return 0;
+          visto[val] = 1;
+        }
+    }
+    
+    //misma logica pero para los cuadrados
+    
+    for (k = 0; k < 9 ; k++) {
+      for (p = 0 ; p < 10; p++) visto[p] = 0;	
+      for (p = 0 ; p < 9; p++) {
+        int i = 3*(k/3) + (p/3);
+        int j = 3*(k%3) + (p%3);
+        int val = n -> sudo[i][j];
+        if (val == 0) continue;
+        if (visto[val]) return 0;
+        visto[val] = 1;
+      }
+    }
     return 1;
 }
 
