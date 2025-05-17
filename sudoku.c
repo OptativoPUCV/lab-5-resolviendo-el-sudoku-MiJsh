@@ -69,8 +69,7 @@ int is_valid(Node* n){
         }
     }
     
-    //misma logica pero para los cuadrados
-    
+    //ahora para los cuadros de 3x3
     for (k = 0; k < 9 ; k++) {
       for (p = 0 ; p < 10; p++) visto[p] = 0;	
       for (p = 0 ; p < 9; p++) {
